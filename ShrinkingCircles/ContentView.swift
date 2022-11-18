@@ -59,6 +59,11 @@ struct ShrinkingCirclesRecursively: Shape {
                                                            height: rect.height - 50 * j)))
         
         // Decide whether to call the func again (recurse)
+        if currentDepth < desiredDepth {
+            //Call function                                   The plus 1 is important! ---V
+            let pathForNextCircle = Path() = recursiveHelper(currentDepth: currentDepth + 1, drawingIn: rect)
+            path.addPath(pathForNextCircle)
+        }
         
         // return the path
         return path
